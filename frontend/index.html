@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+
+        <!-- Add Expense Form -->
+        <section class="card" id="add-expense-section">
+            <h2>Add Expense</h2>
+            <div id="form-error" class="error hidden"></div>
+            <div id="form-success" class="success hidden"></div>
+
+            <div class="form-group">
+                <label>Amount (₹)</label>
+                <input type="number" id="amount" min="0.00" step="1.00" placeholder="e.g. 250.00">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select id="category-select" onchange="handleCategoryChange()">
+                    <option value="">Select a category</option>
+                    <option value="__new__">+ Add new category</option>
+                </select>
+                <input type="text" id="category-custom" placeholder="Enter new category" class="hidden">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input type="text" id="description" placeholder="e.g. Lunch at cafe">
+            </div>
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="date">
+            </div>
+            <button id="submit-btn" onclick="submitExpense()">Add Expense</button>
+        </section>
+
+         <!-- Category Summary -->
+        <section class="card" id="category-summary-section">
+            <h2>Spending by Category</h2>
+            <div id="category-summary"></div>
+        </section>
+
+        <!-- Filters -->
+        <section class="card" id="filters-section">
+            <h2>Expenses</h2>
+            <div class="filters">
+                <div class="form-group">
+                    <label>Filter by Category</label>
+                    <select id="filter-category" onchange="applyFilters()">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Sort by Date</label>
+                    <select id="sort-order" onchange="applyFilters()">
+                        <option value="date_desc">Newest First</option>
+                        <option value="date_asc">Oldest First</option>
+                    </select>
+                </div>
+            </div>
+            <div class="total-bar">
+                Total: ₹<span id="total-amount">0.00</span>
+            </div>
+        </section>
+
+
+
+        <!-- Expense List -->
+        <section class="card">
+            <div id="expense-list"></div>
+            <div id="list-error" class="error hidden"></div>
+            <div id="loading" class="hidden">Loading...</div>
+            <button id="load-more-btn" class="hidden" onclick="loadMore()">Load More</button>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -32,6 +32,13 @@ class ExpenseCreate(BaseModel):
             raise ValueError("Description cannot be empty")
         return v.strip()
 
+    @field_validator("date")
+    @classmethod
+    def date_must_not_be_future(cls, v):
+        if v > date.today():
+           raise ValueError("Date cannot be in the future")
+        return v    
+
 
 class ExpenseResponse(BaseModel):
     id: int

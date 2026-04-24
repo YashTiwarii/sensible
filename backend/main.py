@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import init_db
-from routes import categories
+from routes import categories , expenses
 
 app = FastAPI(title="Expense Tracker")
 
@@ -16,5 +16,5 @@ app.add_middleware(
 def startup():
     init_db()
 
-#app.include_router(expenses.router, prefix="/expenses", tags=["expenses"])
+app.include_router(expenses.router, prefix="/expenses", tags=["expenses"])
 app.include_router(categories.router, prefix="/categories", tags=["categories"])
