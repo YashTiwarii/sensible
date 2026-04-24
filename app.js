@@ -135,6 +135,7 @@ function applyFilters() {
     filterDebounce = setTimeout(() => {
       console.log("filter-category element value:", document.getElementById("filter-category").value);
       currentCategory = document.getElementById("filter-category").value;
+      currentSort = document.getElementById("sort-order").value;
       console.log("currentCategory set to:", currentCategory);
     fetchExpenses(true);
    }, 300);
