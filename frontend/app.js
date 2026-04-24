@@ -1,7 +1,7 @@
 const API = "https://sensible-backend-ndx9.onrender.com";
 
 let currentOffset = 0;
-const LIMIT = 3;
+const LIMIT = 20;
 let currentCategory = "";
 let currentSort = "date_desc";
 let totalCount = 0;
