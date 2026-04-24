@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:8000";
+const API = "https://sensible-backend-ndx9.onrender.com";
 
 let currentOffset = 0;
 const LIMIT = 3;
