@@ -35,7 +35,7 @@ class ExpenseCreate(BaseModel):
 
 class ExpenseResponse(BaseModel):
     id: int
-    amount: Decimal
+    amount: str
     category: str
     description: str
     date: str
@@ -45,7 +45,7 @@ class ExpenseResponse(BaseModel):
     def from_row(cls, row):
         return cls(
             id=row["id"],
-            amount=Decimal(row["amount"]) / 100,
+            amount=f"{Decimal(row['amount']) / 100:.2f}",
             category=row["category"],
             description=row["description"],
             date=row["date"],
@@ -55,4 +55,4 @@ class ExpenseResponse(BaseModel):
 
 class CategoryResponse(BaseModel):
     name: str
-    total: Decimal
+    total: str
